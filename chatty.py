@@ -40,7 +40,9 @@ def main():
     
     index = pinecone.Index(index_name)
 
-    st.header("Ask questions from your PDF files")
+    st.header("Index stats")
+
+    st.write(index.DescribeIndexStats)
 
     model_name = 'text-embedding-ada-002'
 
