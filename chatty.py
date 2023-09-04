@@ -43,7 +43,7 @@ def main():
     st.header("Index stats")
 
     index_stats_response = index.describe_index_stats()
-    st.write(index_stats_response)
+    st.write(index_stats_response.namespaces)
 
     model_name = 'text-embedding-ada-002'
 
