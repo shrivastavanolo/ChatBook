@@ -40,7 +40,7 @@ def main():
     
     index = pinecone.Index(index_name)
 
-    st.header("PDFs uploaded")
+    st.header("Uploaded files: ")
 
     index_stats_response = index.describe_index_stats()
     st.write(index_stats_response.namespaces)
