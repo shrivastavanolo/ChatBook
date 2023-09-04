@@ -42,7 +42,8 @@ def main():
 
     st.header("Index stats")
 
-    st.write(pinecone.describe_index(index_name))
+    index_stats_response = index.describe_index_stats()
+    st.write(index_stats_response)
 
     model_name = 'text-embedding-ada-002'
 
