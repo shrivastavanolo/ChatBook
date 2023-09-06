@@ -18,11 +18,12 @@ import numpy as np
 from langchain.vectorstores import Pinecone
 from pymongo.mongo_client import MongoClient
 from pymongo.mongo_client import MongoClient
+import ssl
 
 uri = "mongodb+srv://alinakapoor2002:Jd4jOtIbOonIHWgC@cluster0.kqz0gln.mongodb.net/?retryWrites=true&w=majority"
 # Create a new client and connect to the server
 client = MongoClient(uri,ssl=True,
-    ssl_cert_reqs=CERT_NONE,)
+    ssl_cert_reqs=ssl.CERT_NONE)
 db=client.Images
 table=db.Imagebase
 
