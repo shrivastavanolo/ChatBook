@@ -10,3 +10,4 @@ tiktoken
 redis
 pinecone-client
 numpy
+pymongo
