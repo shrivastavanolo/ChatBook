@@ -16,6 +16,11 @@ from langchain.chat_models import ChatOpenAI
 import pinecone
 import numpy as np
 from langchain.vectorstores import Pinecone
+from pymongo.mongo_client import MongoClient
+from pymongo.mongo_client import MongoClient
+uri = "mongodb+srv://alinakapoor2002:Jd4jOtIbOonIHWgC@cluster0.kqz0gln.mongodb.net/?retryWrites=true&w=majority"
+# Create a new client and connect to the server
+client = MongoClient(uri)
 
 
 
@@ -56,7 +61,7 @@ def main():
                 length_function=len
             )
 
-    choice=st.selectbox('What would you like to do?', ['Select from dropdown','Upload PDFs', 'Delete PDF','Partially delete PDF','Ask Question'],index=0)
+    choice=st.selectbox('What would you like to do?', ['Select from dropdown','Upload PDFs', 'Delete PDF','Partially delete PDF','Ask Question',"Upload Image","Image Search"],index=0)
 
     if choice=='Partially delete PDF':
         name=st.text_input("Enter name of PDF:")
@@ -76,6 +81,36 @@ def main():
             index.delete(ids=ids,namespace=name)
             st.write([(x,y) for (x,y) in zip(ids,scores)],"deleted")
 
+    elif choice=='Upload Image':
+        image=st.file_uploader("Upload your image",type=['png', 'jpeg', 'jpg'])
+        title=st.text_input("Upload title of image",max_chars=1000)
+        desc=st.text_input("Upload description (optional)",max_chars=1000)
+        if image and title:
+            if desc:
+                emberd = embed.embed_documents(desc)
+
+                index.upsert(vectors=zip([title],emberd),namespace="Images")
+            else:
+                embert=embed.embed_documents(title)
+                index.upsert(vectors=zip([title],embert),namespace="Images")
+            template={
+                    "id": title,
+                    "img": image.getvalue(),
+                    }
+            table.insert_one(template)
+
+    elif choice=="Image Search":
+        txt=st.text_input("Enter text")
+        if txt:
+            parts = text_splitter.split_text(text=txt)
+            ember2 = embed.embed_documents(parts)
+            sims=index.query(ember2, top_k=1,namespace="Images")
+            pred=sims.matches[0]
+            title=pred["id"]
+            que=table.find_one({"id":title})
+            pic=que['img']
+            st.image(pic)
+            st.write(title)
 
 
     elif choice=='Upload PDFs':
