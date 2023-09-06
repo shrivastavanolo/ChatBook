@@ -18,13 +18,13 @@ import numpy as np
 from langchain.vectorstores import Pinecone
 from pymongo.mongo_client import MongoClient
 from pymongo.mongo_client import MongoClient
+
 uri = "mongodb+srv://alinakapoor2002:Jd4jOtIbOonIHWgC@cluster0.kqz0gln.mongodb.net/?retryWrites=true&w=majority"
 # Create a new client and connect to the server
-client = MongoClient(uri,connect=False)
+client = MongoClient(uri,ssl=True,
+    ssl_cert_reqs=ssl.CERT_NONE,)
 db=client.Images
 table=db.Imagebase
-
-
 
 load_dotenv()
 pinecone.init(api_key="3f5eeaa8-01f6-4355-a8e6-22153c4242d4", environment="us-west1-gcp-free")
