@@ -21,7 +21,7 @@ from pymongo.mongo_client import MongoClient
 import certifi
 ca = certifi.where()
 
-uri = st.secrets(["mongo"])
+uri = st.secrets["mongo"]
 # Create a new client and connect to the server
 client = MongoClient(uri, tlsCAFile=ca)
 db=client.Images
