@@ -11,3 +11,4 @@ redis
 pinecone-client
 numpy
 pymongo
+ssl
