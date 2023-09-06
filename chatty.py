@@ -20,7 +20,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.mongo_client import MongoClient
 uri = "mongodb+srv://alinakapoor2002:Jd4jOtIbOonIHWgC@cluster0.kqz0gln.mongodb.net/?retryWrites=true&w=majority"
 # Create a new client and connect to the server
-client = MongoClient(uri)
+client = MongoClient(uri,connect=False)
 db=client.Images
 table=db.Imagebase
 
