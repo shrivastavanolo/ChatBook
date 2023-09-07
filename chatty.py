@@ -203,7 +203,7 @@ def main():
             index.delete(delete_all=True,namespace=name)
             st.write(name,"deleted")
             if name=="Images":
-                db.table.deleteMany({})
+                db.table.delete_many({})
 
 if __name__=='__main__':
     main()
