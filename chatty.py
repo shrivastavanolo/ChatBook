@@ -187,11 +187,13 @@ def main():
             res=agent_chain.run(input=query)
             st.write(res)
 
-    elif choice=="Delete PDF":
-        name=st.text_input("Enter name of PDF")
+    elif choice=="Delete File":
+        name=st.text_input("Enter namespace")
         if name:
             index.delete(delete_all=True,namespace=name)
             st.write(name,"deleted")
+            if name=="Images":
+                Imagebase.deleteMany({})
 
 if __name__=='__main__':
     main()
