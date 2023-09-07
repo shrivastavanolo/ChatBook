@@ -187,6 +187,15 @@ def main():
         if query:
             res=agent_chain.run(input=query)
             st.write(res)
+            chunks = text_splitter.split_text(text=query)
+            ember2 = embed.embed_documents(chunks)
+            sims=index.query(ember2, top_k=1,namespace="Images")
+            pred=sims.matches[0]
+            title=pred["id"]
+            que=table.find_one({"id":title})
+            pic=que['img']
+            st.image(pic)
+            st.write(title)
 
     elif choice=="Delete File":
         name=st.text_input("Enter namespace")
@@ -194,7 +203,7 @@ def main():
             index.delete(delete_all=True,namespace=name)
             st.write(name,"deleted")
             if name=="Images":
-                table.deleteMany({})
+                db.table.deleteMany({})
 
 if __name__=='__main__':
     main()
