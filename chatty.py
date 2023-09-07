@@ -64,7 +64,7 @@ def main():
                 length_function=len
             )
 
-    choice=st.selectbox('What would you like to do?', ['Select from dropdown','Upload PDFs', 'Delete PDF','Partially delete PDF','Ask Question',"Upload Image","Image Search"],index=0)
+    choice=st.selectbox('What would you like to do?', ['Select from dropdown','Upload PDFs', 'Delete File','Partially delete PDF','Ask Question',"Upload Image","Image Search"],index=0)
 
     if choice=='Partially delete PDF':
         name=st.text_input("Enter name of PDF:")
@@ -101,6 +101,7 @@ def main():
                     "img": image.getvalue(),
                     }
             table.insert_one(template)
+            st.write(title,"uploaded")
 
     elif choice=="Image Search":
         txt=st.text_input("Enter text")
