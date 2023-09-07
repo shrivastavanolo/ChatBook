@@ -23,7 +23,7 @@ ca = certifi.where()
 
 uri = st.secrets["mongo"]
 # Create a new client and connect to the server
-client = MongoClient(uri,ssl=False,tls=False)
+client = MongoClient(uri,tls=False)
 db=client.Images
 table=db.Imagebase
 
