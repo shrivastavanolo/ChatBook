@@ -194,7 +194,7 @@ def main():
             index.delete(delete_all=True,namespace=name)
             st.write(name,"deleted")
             if name=="Images":
-                Imagebase.deleteMany({})
+                table.deleteMany({})
 
 if __name__=='__main__':
     main()
