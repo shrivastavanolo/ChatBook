@@ -28,7 +28,7 @@ db=client.Images
 table=db.Imagebase
 
 load_dotenv()
-pinecone.init(api_key="3f5eeaa8-01f6-4355-a8e6-22153c4242d4", environment="us-west1-gcp-free")
+pinecone.init(api_key=st.secrets["pinecone"], environment="us-west1-gcp-free")
 
 index_name = 'chattypdf'
 
