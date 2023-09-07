@@ -10,5 +10,5 @@ tiktoken
 redis
 pinecone-client
 numpy
-pymongo
+pymongo[ocsp]
 certifi
