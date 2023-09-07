@@ -18,8 +18,15 @@ import numpy as np
 from langchain.vectorstores import Pinecone
 from pymongo.mongo_client import MongoClient
 from pymongo.mongo_client import MongoClient
-import certifi
-ca = certifi.where()
+import itertools
+
+def chunks2(iterable, batch_size=100):
+    """A helper function to break an iterable into chunks of size batch_size."""
+    it = iter(iterable)
+    chunk = tuple(itertools.islice(it, batch_size))
+    while chunk:
+        yield chunk
+        chunk = tuple(itertools.islice(it, batch_size))
 
 uri = st.secrets["mongo"]
 # Create a new client and connect to the server
@@ -132,10 +139,18 @@ def main():
                 store_name=pdf.name[:-4]
                 
                 ember = embed.embed_documents(chunks)
-                
-                ids = map(str, np.arange(m).tolist())
-                index.upsert(vectors=zip(ids,ember),namespace=store_name)
+
+                if m>=1000:
+                    ids = map(str, np.arange(m).tolist())
+                    idx=chunks2(ids,batch_size=100)
+                    for ids_vectors_chunk,id in zip(chunks2(ember, batch_size=100),idx):
+                        index.upsert(vectors=zip(id,ids_vectors_chunk),namespace=store_name)
+
+                else:
+                    ids = map(str, np.arange(m).tolist())
+                    index.upsert(vectors=zip(ids,ember),namespace=store_name)
                 st.write(store_name,"uploaded")
+
 
     elif choice=='Ask Question':
 
