@@ -37,7 +37,7 @@ table=db.Imagebase
 load_dotenv()
 pinecone.init(api_key=st.secrets["pinecone"], environment="gcp-starter")
 
-index_name = 'chattypdf'
+index_name = 'testbot'
 
 with st.sidebar:
     st.title("ChattyPDF")
