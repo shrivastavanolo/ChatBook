@@ -71,7 +71,7 @@ def main():
                 length_function=len
             )
 
-    choice=st.selectbox('What would you like to do?', ['Select from dropdown','Upload PDFs', 'Delete File','Partially delete PDF','Ask Question',"Upload Image","Image Search"],index=0)
+    choice=st.selectbox('What would you like to do?', ['Select from dropdown','Upload PDFs', 'Delete File','Partially delete PDF','Ask Question',"Upload Image"],index=0)
 
     if choice=='Partially delete PDF':
         name=st.text_input("Enter name of PDF:")
@@ -110,18 +110,18 @@ def main():
             table.insert_one(template)
             st.write(title,"uploaded")
 
-    elif choice=="Image Search":
-        txt=st.text_input("Enter text")
-        # if txt:
-        #     parts = text_splitter.split_text(text=txt)
-        #     ember2 = embed.embed_documents(parts)
-        #     sims=index.query(ember2, top_k=1,namespace="Images")
-        #     pred=sims.matches[0]
-        #     title=pred["id"]
-        #     que=table.find_one({"id":title})
-        #     pic=que['img']
-        #     st.image(pic)
-        #     st.write(title)
+    # elif choice=="Image Search":
+    #     txt=st.text_input("Enter text")
+    #     if txt:
+    #         parts = text_splitter.split_text(text=txt)
+    #         ember2 = embed.embed_documents(parts)
+    #         sims=index.query(ember2, top_k=1,namespace="Images")
+    #         pred=sims.matches[0]
+    #         title=pred["id"]
+    #         que=table.find_one({"id":title})
+    #         pic=que['img']
+    #         st.image(pic)
+    #         st.write(title)
 
 
     elif choice=='Upload PDFs':
