@@ -112,16 +112,16 @@ def main():
 
     elif choice=="Image Search":
         txt=st.text_input("Enter text")
-        if txt:
-            parts = text_splitter.split_text(text=txt)
-            ember2 = embed.embed_documents(parts)
-            sims=index.query(ember2, top_k=1,namespace="Images")
-            pred=sims.matches[0]
-            title=pred["id"]
-            que=table.find_one({"id":title})
-            pic=que['img']
-            st.image(pic)
-            st.write(title)
+        # if txt:
+        #     parts = text_splitter.split_text(text=txt)
+        #     ember2 = embed.embed_documents(parts)
+        #     sims=index.query(ember2, top_k=1,namespace="Images")
+        #     pred=sims.matches[0]
+        #     title=pred["id"]
+        #     que=table.find_one({"id":title})
+        #     pic=que['img']
+        #     st.image(pic)
+        #     st.write(title)
 
 
     elif choice=='Upload PDFs':
