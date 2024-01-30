@@ -45,10 +45,6 @@ streamlit run chattypdf.py
 
 - [Shreya Shrivastava](https://www.linkedin.com/in/shreya-shrivastava-b39911244/)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - Streamlit
