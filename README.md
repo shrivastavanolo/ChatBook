@@ -1,6 +1,6 @@
-# ChattyPDF
+# ChatBook
 
-ChattyPDF is an application powered by LangChain and OpenAI, built using Streamlit, enabling users to interact with an LLM-powered chatbot. This bot is designed to handle various tasks related to text processing, PDF handling, image uploading, and question-answering.
+ChatBook is an application powered by LangChain and OpenAI, built using Streamlit, enabling users to interact with an LLM-powered chatbot. This bot is designed to handle various tasks related to text processing, PDF handling, image uploading, and question-answering.
 
 ## Prerequisites
 
@@ -55,7 +55,7 @@ ChattyPDF is an application powered by LangChain and OpenAI, built using Streaml
     - Upload one or multiple PDF files.
     - Extract text content from uploaded PDFs and store it in Pinecone index.
 - **Partially delete PDF**:
-    - Delete specific content from a PDF stored in the index.
+    - Delete specific content from a PDF stored in the index without affecting other information.
 - **Ask Question**:
     - Interact with the chatbot to ask questions about the uploaded PDFs.
 - **Upload Image**:
