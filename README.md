@@ -47,6 +47,7 @@ ChatBook is an application powered by LangChain and OpenAI, built using Streamli
     - Partially delete PDF: Remove specific content from a previously uploaded PDF.
     - Ask Question: Interact with the chatbot to get answers related to uploaded PDFs.
     - Upload Image: Add images along with titles and descriptions for retrieval.
+    - Search Image: Find uploaded image via keywords.
     - Delete File: Remove stored data associated with uploaded PDFs or images.
 
 ## Functionality Overview
@@ -60,6 +61,8 @@ ChatBook is an application powered by LangChain and OpenAI, built using Streamli
     - Interact with the chatbot to ask questions about the uploaded PDFs.
 - **Upload Image**:
     - Upload images with titles and descriptions for retrieval.
+- **Search Image**:
+    - Search via a keyword for any uploaded image.
 - **Delete File**:
     - Delete stored data associated with uploaded PDFs or images.
 
